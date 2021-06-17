@@ -21,7 +21,7 @@ app.get('/list/active', async (req, res) => {
 app.get('/list/inactive', async (req, res) => {
     const collection = client.db(dbName).collection(collectionName);
     const response = await collection.find({ status: { "$eq": "inactive" } }).toArray();
-    return res.json(response);
+    return res.send(JSON.stringify(response));
 })
 
 app.post('/create', async (req, res) => {
